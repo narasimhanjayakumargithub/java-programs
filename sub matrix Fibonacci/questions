@@ -1,0 +1,171 @@
+1.Problem : Sub Grand Sum
+
+Juan Marquinho is verifying a conjecture on sums of elements in sub matrices of large matrices. The
+conjecture involves computing the number Fibonacci (S mod 50) where S is the sum of elements in a sub
+matrix, and mod 50 indicates the remainder of S when divided by 50. Fibonacci numbers are the defined as
+follows:
+Fibonacci (1) = 1, Fibonacci (2) =1 and for all n &gt; 2, Fibonacci (n) = Fibonacci (n-1) + Fibonacci (n-2). The
+first few Fibonacci numbers are 1, 1, 2, 3, 5, 8, …..
+Since the number of sub matrices to compute is very large, he needs some help. Write a program to help
+him. 
+Specifically, given a N x N matrix and a set of sub matrices, compute the numbers Fibonacci (S mod 50) for
+each of the sub matrices, where S is the sum of elements of the sub matrix.
+Input Format:
+The first line gives three space separated integers R, C, N, giving the number of rows, number of columns
+and the number of sub matrices
+The next R lines each contain, space separated C integers giving the elements of the rows 
+The next N lines each contain space separated four integers giving the top left and bottom right coordinates
+of the sub matrices (rows are numbered 0 to R-1 and columns are numbered 0 to C-1, and the top left
+corner of the matrix has coordinates 0, 0.
+Output Format:
+N lines each giving the Fibonacci (S mod 50) of the sub matrices.
+
+Constraints
+5 ≤ R ≤ 1000 
+5 ≤ C ≤ 1000 
+5 ≤ N ≤ 1000000
+The elements of the matrix are integers in the range 0 to 100
+Constraints:
+None
+
+Example 1
+Input 
+10 10 1 
+30 77 92 21 16 7 77 3 2 20 
+66 77 24 40 21 38 3 50 37 100 
+59 60 17 7 37 69 40 18 68 17 
+27 45 84 35 81 23 4 6 22 97 
+51 2 54 62 94 47 44 42 35 91 
+63 59 6 49 80 56 73 30 77 89 
+74 12 5 56 2 72 2 38 60 75 
+
+63 55 20 16 33 2 64 95 66 78 
+43 70 60 22 52 56 6 93 42 16 
+86 7 40 56 32 78 78 12 3 90 
+0 0 2 2
+Output 
+1
+Explanation 
+The first sub matrix is 
+30 77 92 
+66 77 24 
+59 60 17
+The sum of these elements is 502 and 502 mod 50 is 2. We need the Fibonacci (2) and hence the output is
+1.
+
+Example 2
+Input 
+10 10 1 
+30 77 92 21 16 7 77 3 2 20 
+66 77 24 40 21 38 3 50 37 100 
+59 60 17 7 37 69 40 18 68 17 
+27 45 84 35 81 23 4 6 22 97 
+51 2 54 62 94 47 44 42 35 91 
+63 59 6 49 80 56 73 30 77 89 
+74 12 5 56 2 72 2 38 60 75 
+63 55 20 16 33 2 64 95 66 78 
+43 70 60 22 52 56 6 93 42 16 
+86 7 40 56 32 78 78 12 3 90 
+0 0 3 3
+Output 
+89
+Explanation 
+The sub matrix is 
+30 77 92 21 
+66 77 24 40 
+59 60 17 7 
+27 45 84 35 
+And the sum of the elements is 761. The remainder of this sum when divided by 50 is 11 and the eleventh
+Fibonacci number is 89.
+
+2.Problem : Greedy Hostel Owner
+
+You know that summers are at peak this year and every day is hot and due to this everyone is using coolers
+and ACs and a lot of electricity is consumed by the people.
+You are living in a hostel and your hostel owner decided to charge extra for electricity consumption. To
+achieve this he put one separate electricity meter for every room and connected all those meters to central
+meter.
+But the hostel owner is a bit greedy and wants to manipulate the meters to show a reading that is more
+than the actual consumption of electricity. He also encrypted all the meters with alphabets. The technique
+he used for encrypting is as follows:
+Every meter has 6 Alphabets i.e. 6 digits.
+Every alphabet is in upper case.
+Allowed alphabets are A, B, C, D, E, F, G, H, I, J.
+A corresponds to 0, B = 1 and similarly C = 2, D = 3, E = 4, F = 5, G = 6, H = 7, I = 8, J = 9
+The interpretation rules change as follows:
+If the alphabet next to J is A, then J represents 0. Similarly, if the alphabet after I is B, then I counts as 1
+(and not 8), the alphabet after H is C, then H represents 2. The same is true if D follows G and if E follows F.
+Note that A, B, C, D and E will always retain their respective values. 
+
+When J is not followed by A, J will represent 9 and similar rules for I, H, G and F
+You are given central meter reading and encrypted readings of all the meters in the hostel. Your task is to
+find out whether the owner is Greedy or Innocent. If he is greedy then print the unit
+difference otherwise print innocent.
+Owner is greedy if and only if 
+(units of all meters in the hostel except central meter &lt; central meter units)
+Input Format:
+First line contains an integer N, giving the number of rooms in the hostel. 
+The next line contains N strings each of length 6 characters giving the readings of the meters in the rooms
+The next line contains an integer that gives the reading in the central meter
+Output Format:
+First line containing either GREEDY or INNOCENT
+If the first line is GREEDY, the next line should contain the difference (as a decimal number) between the
+central meter reading and the consumption shown in the rooms.
+Constraints:
+Number of rooms &lt;= 100 
+
+Example 1
+Input 
+3 
+JAABHF JAACJA JAACDA 
+500
+Output 
+GREEDY 
+105
+Explanation 
+In the reading JAABHF, J represents 0 since it is followed by A, and hence the reading is 000175. Similarly,
+the other readings are 000200 and 000230. The total of the readings in the rooms is 605 and the central
+meter reading is 500. Thus the owner is GREEDY and he stole 605-500 = 105 units.
+
+Example 2
+Input 
+8 
+JAACJA JAABCH JAABHD JAACAF JAJAJJ JAABEJ JAACJJ JAACDI 
+1500
+Output 
+INNOCENT
+Explanation 
+The readings are, 
+
+000200, 000127, 000173, 000205, 0000099, 000149, 000299, 000238
+The sum of these readings is 1490 &lt; 1500, the central meter reading. Hence the owner is INNOCENT.
+
+TRIED:
+
+3.Problem : Numbers with non-decreasing digits
+
+Some numbers such as 7, 234, 12378 have the digits that are non-decreasing when we read them from left
+to right. In this problem, we want to find the largest such number less than or equal to a given number N.
+Input Format:
+Integer N
+Output Format:
+Largest integer M ≤ N that has its digits non-decreasing. The output should not contain leading zeros.
+Constraints:
+N &lt;= 10^18
+Example 1
+Input 
+89
+Output 
+89
+Explanation 
+
+89 itself has non-decreasing digits.
+
+Example 2
+Input 
+549
+Output 
+499
+Explanation 
+From 500 to 549, the integers have 5 as the leading digit and the second digit must be less than or equal to
+4. But then, such a number cannot have its digits non decreasing.
